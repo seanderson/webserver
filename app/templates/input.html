@@ -1,0 +1,21 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h1>Input Data</h1>
+    <form action="" method="post" name="input">
+        {{ form.hidden_tag() }}
+        <p>
+            Please enter your name<br>
+            {{ form.user(size=40) }}
+         </p>
+
+         <p>
+          Todo Item<br>
+          {{ form.task(size=100) }}
+         </p>
+        <p>{{ form.done }} Task Done?</p>
+        <p><input type="submit" value="input"></p>
+    </form>
+{% endblock %}
