@@ -1,17 +1,9 @@
 <!-- extend base layout -->
 {% extends "base.html" %}
 
+
 {% block content %}
-    <h1>Hi, {{ user.nickname }}!</h1>
-    <table border="1">
-      <tr>
-	<td><b>Name</b></td> <td><b>Task</b></td> <td><b>Done?</b></td>
-      </tr>
-  {% for post in posts %}
-    <tr>
-      <td>{{ post.person.nickname }} </td> <td>{{ post.task }}</td>
-      <td>{{post.done}}</td>
-     </tr>
-    {% endfor %}
-</table>
+    <h1>Home Page</h1>
+
+
 {% endblock %}

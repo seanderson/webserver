@@ -11,3 +11,5 @@ flask/bin/pip install guess_language
 flask/bin/pip install flipflop
 flask/bin/pip install coverage
 flask/bin/pip install flask-httpauth
+flask/bin/pip/install psycopg2
+
