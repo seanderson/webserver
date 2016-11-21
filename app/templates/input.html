@@ -1,0 +1,23 @@
+<!-- extend base layout -->
+{% extends "base.html" %}
+
+{% block content %}
+
+    <h1>Input Data</h1>
+    <form action="" method="post" name="input">
+      {{ form.hidden_tag() }}
+      <p>
+	Input associates one email name with one task.  That's it!
+        <p>
+            Please enter any user's email<br>
+            {{ form.email(size=40) }}
+         </p>
+
+         <p>
+          Todo Task<br>
+          {{ form.task(size=100) }}
+         </p>
+        <p>{{ form.done }} Task Done?</p>
+        <p><input type="submit" value="input"></p>
+    </form>
+{% endblock %}

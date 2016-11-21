@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block title %}Todo - Register{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1>Register</h1>
+</div>
+
+    <form action="" method="post" name="input">
+        {{ form.hidden_tag() }}
+        <p>
+            Please enter your email<br>
+            {{ form.email(size=80) }}
+         </p>
+         <p>
+          Password<br>
+          {{ form.password(size=20) }}
+         </p>
+         <p>
+          Confirm Password<br>
+          {{ form.password2(size=20) }}
+         </p>
+
+        <p><input type="submit" value="input"></p>
+    </form>
+
+
+
+    <br>
+    <p>New user? <a href="/register">Click here to register</a>.</p>
+
+{% endblock %}
+
+
+
+
