@@ -13,6 +13,7 @@ class LoginForm(Form):
     remember_me = BooleanField('Keep me logged in')
     submit = SubmitField('Log In')
 
+
 class InputForm(Form):
     email = StringField('email', validators=[Required(), Length(1, 64),Email()])
     task = StringField('task', validators=[DataRequired()])
