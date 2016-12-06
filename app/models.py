@@ -31,7 +31,6 @@ class User(db.Model,UserMixin):
     def verify_password(self, password):
         return check_password_hash(self.password_hash, password)
 
-    
     def symTable(self):
         '''Return user as a dictionary.'''
         d = {}
@@ -48,23 +47,9 @@ class User(db.Model,UserMixin):
             'task': self.task
         }
         return json_post
-
-
             
 
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
-
-#from flask.ext.login import UserMixin
-#from yourapp import login_manager
-
-#@login_manager.user_loader
-#def get_user(ident):
-#  return User.query.get(int(ident))
-
-
-#class User(db.Model, UserMixin)
-#  id = db.Column(db.Integer, primary_key=True)
-  ### yada yada, you know what goes here
 

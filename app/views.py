@@ -21,29 +21,46 @@ def index():
     return render_template('index.html',
                            title='Home')
 
-
+# Login
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
+    flash('got to login form')
+    if form.validate():
+        print "VALID FORM"
+    print("FORM ERRORS " + str(form.errors))
+
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
         if user is not None and user.verify_password(form.password.data):
             login_user(user)
-            return redirect(request.args.get('next') or url_for('index'))
+            flash('login success.')
+            return jsonify( {"login" : "true"} ) #redirect(request.args.get('next') or url_for('index'))
         flash('Invalid username or password.')
+    flash('not valid on submit, so redering login page')
     return render_template('login.html',form=form)
 
 
+# register new user
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     form = RegistrationForm()
+    if form.is_submitted():
+        print "SUBMITTED FORM"
+
+    if form.validate():
+        print "VALID FORM"
+    print("FORM ERRORS " + str(form.errors))
     if form.validate_on_submit():
+        flash("email " + form.email.data)
+        flash("pws " + form.password.data)
         user = User(email=form.email.data,
                     password=form.password.data)
         db.session.add(user)
         db.session.commit()
         flash('You can now login.')
         return redirect('/login')
+    flash('rendering register.html')
     return render_template('register.html', form=form)
 
 @app.route('/logout')
@@ -99,9 +116,10 @@ def showdb():
                             title='Database View',
                             posts=lst)
 
-  
-@app.route('/posts/')
+# Testing json form of data  
+@app.route('/dbjsn')
+@login_required
 def get_posts():
     users = models.User.query.all()
-    #return jsonify( {'posts': [ post.to_json() for post in posts] } )
-    return jsonify(users[0].to_json())
+    return jsonify( {'tasks': [ user.to_json() for user in users] } )
+
