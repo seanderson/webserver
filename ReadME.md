@@ -1,4 +1,5 @@
 # webserver
+(The sister android app is at https://github.com/seanderson/TodoWeb)
 
 This builds a todo app on the web backed by a postgres database.  The
 simple idea is to authenticate a user and then associate each
